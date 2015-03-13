@@ -1,5 +1,10 @@
 var CommentBox = React.createClass({
     handleCommentSubmit: function(comment) {
+        /* Save immediately locally */
+        var comments = this.state.data;
+        var newComments = comments.concat([comment]);
+        this.setState({data: newComments});
+        /* Persist To Server */
         $.ajax({
             url: this.props.url,
             dataType: 'json',

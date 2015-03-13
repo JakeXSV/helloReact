@@ -10,5 +10,9 @@
     {
         "author": "Jake",
         "text": "hello world"
+    },
+    {
+        "author": "Jake",
+        "text": "Optimistic saving is kinda nifty."
     }
 ]
