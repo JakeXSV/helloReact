@@ -1,14 +1,13 @@
-var converter = new Showdown.converter();
 var Comment = React.createClass({
     render: function() {
-        // Assume ^ showdownjs is safe.
-        var rawMarkup = converter.makeHtml(this.props.children.toString());
         return (
             <div className="comment">
-                <h2 className="commentAuthor">
-                    {this.props.author}
+                <h2 className="commentText">
+                    {this.props.data.text}
                 </h2>
-                <span dangerouslySetInnerHTML={{__html: rawMarkup}} />
+                <p>
+                    &nbsp;-{this.props.data.author}
+                </p>
             </div>
         );
     }
