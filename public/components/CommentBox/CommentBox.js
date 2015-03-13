@@ -1,4 +1,18 @@
 var CommentBox = React.createClass({
+    handleCommentSubmit: function(comment) {
+        $.ajax({
+            url: this.props.url,
+            dataType: 'json',
+            type: 'POST',
+            data: comment,
+            success: function(data) {
+                this.setState({data: data});
+            }.bind(this),
+            error: function(xhr, status, err) {
+                console.error(this.props.url, status, err.toString());
+            }.bind(this)
+        });
+    },
     loadCommentsFromServer: function() {
         $.ajax({
             url: this.props.url,
@@ -28,7 +42,7 @@ var CommentBox = React.createClass({
             <div className="commentBox">
                 Hello, world! I am a CommentBox.
                 <CommentList data={this.state.data} />
-                <CommentForm />
+                <CommentForm onCommentSubmit={this.handleCommentSubmit} />
             </div>
         );
     }
